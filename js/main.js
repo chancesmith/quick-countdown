@@ -9,7 +9,8 @@ let today = new Date(),
 		message = "Times up!",
 		$title = document.getElementById("title"),
 		$clock = document.getElementById("clock"),
-		$message = document.getElementById("done-message");
+		$message = document.getElementById("done-message"),
+		tour = true;
 
 function getUrlVar(q) {
 	return (window.location.search.match(new RegExp('[?&]' + q + '=([^&]+)')) || [, null])[1];
@@ -80,6 +81,22 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-var deadline = new Date(Date.parse(new Date()) + days + hours + mins);
-showTitle();
-initializeClock('clock', deadline);
+if(mins || hours || days){ 
+	tour = false; 
+	var deadline = new Date(Date.parse(new Date()) + days + hours + mins);
+	showTitle();
+	initializeClock('clock', deadline);
+}
+
+if(tour){
+	// hide title
+	$title.style.display = 'none';
+	// hide clock
+	$clock.style.display = 'none';
+	
+	$message.innerHTML = '<h1>Ready for a countdown?</h1>';
+	$message.innerHTML += '<p>Pick a one below or <a href="./readme.md">read the instructions</a> to create your own countdown.</p>';
+	$message.innerHTML += '<a class="btn" href="?mins=3">3 mins</a> ';
+	$message.innerHTML += '<a class="btn" href="?mins=5">5 mins</a> ';
+	$message.innerHTML += '<a class="btn" href="?hours=1">1 hour</a>';
+}
