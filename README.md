@@ -1,7 +1,8 @@
-# quick-countdown
-Countdown JS
-
+# Quick Countdown
 Add countdown by URL variables
+
+Check it out
+https://chancesmith.github.io/quick-countdown/
 
 ## Countdown variables
 - `?days=4`
