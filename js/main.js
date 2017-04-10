@@ -96,7 +96,7 @@ if(tour){
 	$clock.style.display = 'none';
 
 	$message.innerHTML = '<h1>Ready for a countdown?</h1>';
-	$message.innerHTML += '<p>Pick a one below or <a href="./readme.md">read the instructions</a> to create your own countdown.</p>';
+	$message.innerHTML += '<p>Pick a one below or <a href="https://github.com/chancesmith/quick-countdown/blob/master/README.md">read the instructions</a> to create your own countdown.</p>';
 	$message.innerHTML += '<a class="btn" href="?mins=3">3 mins</a> ';
 	$message.innerHTML += '<a class="btn" href="?mins=5">5 mins</a> ';
 	$message.innerHTML += '<a class="btn" href="?hours=1">1 hour</a>';
