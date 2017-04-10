@@ -38,7 +38,7 @@ function showTimerDoneMessage(){
 
 	if(getUrlVar('message')){ message = decodeURIComponent( getUrlVar('message') ); }
 	$message.innerHTML = "<h1>" + message + "</h1>";
-	$message.innerHTML += '<p>Let\'s or <a href="./">cleanup</a>.</p>';
+	$message.innerHTML += '<p>Let\'s <a href="./">cleanup</a>.</p>';
 }
 
 // source: http://codepen.io/SitePoint/pen/MwNPVq
