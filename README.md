@@ -4,6 +4,9 @@ Add countdown by URL variables
 Check it out
 https://chancesmith.github.io/quick-countdown/
 
+## Example
+https://chancesmith.github.io/quick-countdown/?mins=5&title=Time%20until%20CO:de
+
 ## Countdown variables
 - `?days=4`
 - `?hours=2`
