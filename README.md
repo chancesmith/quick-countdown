@@ -20,4 +20,5 @@ https://chancesmith.github.io/quick-countdown/
 - [X] fix default & add intro instructions if no URL variables set
 - [ ] `?date=2017-05-02&hours=14&mins=35` 2:35pm on 05-02-2017
 - [ ] `?date=2017-05-02`
-- [ ] add visiual of time left on coutdown
+- [ ] add visual of time left on countdown
+- [ ] remove blocks once section reaches zero (make more minimal)
