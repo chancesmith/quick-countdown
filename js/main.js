@@ -41,6 +41,7 @@ function showTimerDoneMessage(){
 	$message.innerHTML += '<p>Let\'s <a href="./">cleanup</a>.</p>';
 }
 
+// post: https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
 // source: http://codepen.io/SitePoint/pen/MwNPVq
 function getTimeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
