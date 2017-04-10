@@ -2,7 +2,7 @@
 let today = new Date(),
 		days = 0,
 		hours = 0,
-		mins = 0, 
+		mins = 0,
 		date = today,
 		countdown,
 		title = "Countdown",
@@ -81,8 +81,8 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-if(mins || hours || days){ 
-	tour = false; 
+if(mins || hours || days){
+	tour = false;
 	var deadline = new Date(Date.parse(new Date()) + days + hours + mins);
 	showTitle();
 	initializeClock('clock', deadline);
@@ -93,7 +93,7 @@ if(tour){
 	$title.style.display = 'none';
 	// hide clock
 	$clock.style.display = 'none';
-	
+
 	$message.innerHTML = '<h1>Ready for a countdown?</h1>';
 	$message.innerHTML += '<p>Pick a one below or <a href="./readme.md">read the instructions</a> to create your own countdown.</p>';
 	$message.innerHTML += '<a class="btn" href="?mins=3">3 mins</a> ';
