@@ -40,7 +40,12 @@ h1{
   padding-top: 5px;
   font-size: 27px;
 }
-
+a {
+	color: #333;
+}
+a:hover {
+	color: #1B1B1B;
+}
 a.btn {
   display: inline-block;
   padding: 12px 21px;
