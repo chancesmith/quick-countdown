@@ -13,3 +13,4 @@ Add countdown by URL variables
 - add custom success message with URL variable
 - `?date=2017-05-02&hours=14&mins=35` 2:35pm on 05-02-2017
 - `?date=2017-05-02`
+- add visiual of time left on coutdown
