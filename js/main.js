@@ -5,11 +5,11 @@ let today = new Date(),
 		mins = 0,
 		date = today,
 		countdown,
-		title = "Countdown",
-		message = "Times up!",
-		$title = document.getElementById("title"),
-		$clock = document.getElementById("clock"),
-		$message = document.getElementById("done-message"),
+		title = 'Countdown',
+		message = 'Times up!',
+		$title = document.getElementById('title'),
+		$clock = document.getElementById('clock'),
+		$message = document.getElementById('done-message'),
 		tour = true;
 
 function getUrlVar(q) {
@@ -35,9 +35,11 @@ function showTimerDoneMessage(){
 	$title.style.display = 'none';
 	// hide clock
 	$clock.style.display = 'none';
+	// add .done to <body>
+	document.body.classList.add('done');
 
 	if(getUrlVar('message')){ message = decodeURIComponent( getUrlVar('message') ); }
-	$message.innerHTML = "<h1>" + message + "</h1>";
+	$message.innerHTML = '<h1>' + message + '</h1>';
 	$message.innerHTML += '<p>Let\'s <a href="./">cleanup</a>.</p>';
 }
 
@@ -94,7 +96,7 @@ if(mins || hours || days){
 	var deadline = new Date(Date.parse(new Date()) + days + hours + mins);
 	showTitle();
 	initializeClock('clock', deadline);
-	progressJs().start();
+	progressJs('body').setOptions({ 'theme': 'blue' }).start();
 }
 
 if(tour){

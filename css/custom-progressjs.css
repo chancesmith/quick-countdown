@@ -1,0 +1,6 @@
+.progressjs-progress.progressjs-theme-blue {
+  z-index: -1;
+}
+.progressjs-inner {
+	height: 20000px !important;
+}

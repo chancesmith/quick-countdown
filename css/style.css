@@ -4,7 +4,9 @@ body{
   font-family: helvetica;
   font-weight: 100;
 }
-
+body.done {
+  background: #67d08c;
+}
 h1{
   color: #313131;
   font-weight: 100;
