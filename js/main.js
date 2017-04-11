@@ -64,9 +64,14 @@ function initializeClock(id, endtime) {
   var hoursSpan = clock.querySelector('.hours');
   var minutesSpan = clock.querySelector('.minutes');
   var secondsSpan = clock.querySelector('.seconds');
+  var startTotal = getTimeRemaining(endtime).total;
 
   function updateClock() {
     var t = getTimeRemaining(endtime);
+    
+    // update progress bar progress
+    var currentPercentageLeft = Math.floor( t.total / startTotal * 100 );
+    progressJs().set(currentPercentageLeft);
 
     daysSpan.innerHTML = t.days;
     hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
@@ -75,6 +80,7 @@ function initializeClock(id, endtime) {
 
     if (t.total <= 0) {
       clearInterval(timeinterval);
+      progressJs().end();
       showTimerDoneMessage();
     }
   }
@@ -88,6 +94,7 @@ if(mins || hours || days){
 	var deadline = new Date(Date.parse(new Date()) + days + hours + mins);
 	showTitle();
 	initializeClock('clock', deadline);
+	progressJs().start();
 }
 
 if(tour){
