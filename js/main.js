@@ -72,7 +72,7 @@ function initializeClock(id, endtime) {
 
   function updateClock() {
     var t = getTimeRemaining(endtime);
-    
+
     // update progress bar progress
     var currentPercentageLeft = Math.floor( t.total / startTotal * 100 );
     progressJs().set(currentPercentageLeft);
@@ -99,7 +99,7 @@ if(mins || hours || days){
 	showTitle();
 	initializeClock('clock', deadline);
 	progressJs().setOptions({ 'theme': 'blue' }).start().set(100);
-	document.getElementsByClassName('wrap')[0].style.opacity = 0.2;
+	document.getElementsByClassName('wrap')[0].style.opacity = 0.5;
 }
 
 if(tour){
