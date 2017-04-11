@@ -96,7 +96,7 @@ if(mins || hours || days){
 	var deadline = new Date(Date.parse(new Date()) + days + hours + mins);
 	showTitle();
 	initializeClock('clock', deadline);
-	progressJs().setOptions({ 'theme': 'blue' }).start();
+	progressJs().setOptions({ 'theme': 'blue' }).start().set(100);
 }
 
 if(tour){
