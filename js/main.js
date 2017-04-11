@@ -35,6 +35,8 @@ function showTimerDoneMessage(){
 	$title.style.display = 'none';
 	// hide clock
 	$clock.style.display = 'none';
+	// focus in .wrap
+	document.getElementsByClassName('wrap')[0].style.opacity = 1;
 	// add .done to <body>
 	document.body.classList.add('done');
 
@@ -97,6 +99,7 @@ if(mins || hours || days){
 	showTitle();
 	initializeClock('clock', deadline);
 	progressJs().setOptions({ 'theme': 'blue' }).start().set(100);
+	document.getElementsByClassName('wrap')[0].style.opacity = 0.2;
 }
 
 if(tour){
