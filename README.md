@@ -4,6 +4,8 @@ Add countdown by URL variables
 Check it out
 https://chancesmith.github.io/quick-countdown/
 
+![quick countdown example](./img/coutdown-example.gif)
+
 ## Example
 https://chancesmith.github.io/quick-countdown/?mins=5&title=Time%20until%20CO:de
 
@@ -21,7 +23,7 @@ https://chancesmith.github.io/quick-countdown/?mins=5&title=Time%20until%20CO:de
 - [X] add custom success message with URL variable
 - [X] add custom title with URL variable
 - [X] fix default & add intro instructions if no URL variables set
+- [X] add visual of time left on countdown
 - [ ] `?date=2017-05-02&hours=14&mins=35` 2:35pm on 05-02-2017
 - [ ] `?date=2017-05-02`
-- [ ] add visual of time left on countdown
 - [ ] remove blocks once section reaches zero (make more minimal)
