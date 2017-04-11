@@ -3,6 +3,7 @@ body{
   background: #ffffff;
   font-family: helvetica;
   font-weight: 100;
+  padding: 80px 0 0;
 }
 body.done {
   background: #67d08c;
