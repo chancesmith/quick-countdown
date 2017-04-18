@@ -3,14 +3,28 @@ let today = new Date(),
 		days = 0,
 		hours = 0,
 		mins = 0,
+		time = 0,
 		date = today,
 		countdown,
+		deadline,
 		title = 'Countdown',
 		message = 'Times up!',
 		$title = document.getElementById('title'),
 		$clock = document.getElementById('clock'),
 		$message = document.getElementById('done-message'),
 		tour = true;
+
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+
+var yyyy = today.getFullYear();
+if(dd<10){dd='0'+dd;}
+if(mm<10){mm='0'+mm;}
+var todayString = mm+'/'+dd+'/'+yyyy;
+
+String.prototype.splice = function(idx, rem, str) {
+    return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
+};
 
 function getUrlVar(q) {
 	return (window.location.search.match(new RegExp('[?&]' + q + '=([^&]+)')) || [, null])[1];
@@ -23,7 +37,24 @@ if(getUrlVar('hours')){ hours = getUrlVar('hours') * 60 * 60 * 1000; }
 // get mins & convert to mins
 if(getUrlVar('mins')){ mins = getUrlVar('mins') * 60 * 1000; }
 // get date
-//if(getUrlVar('date')){ date = getUrlVar('date') * 60 * 60 * 1000; }
+// if(getUrlVar('date')){
+// 	date = getUrlVar('date').replace(/-/g, "\/");
+// 	console.log(date);
+// 	todayString = date; // something like that
+// }
+// get military time
+if(getUrlVar('time')){
+	time = todayString + " " + getUrlVar('time').splice(2, 0, ":");
+	time = new Date(Date.parse(new Date( time )));
+}
+// set deadline
+if(time) {
+	deadline = time;
+} else if(date) {
+	deadline = date;
+} else {
+	deadline = new Date(Date.parse(new Date()) + days + hours + mins + time);
+}
 
 function showTitle(){
 	if(getUrlVar('title')){ title = decodeURIComponent( getUrlVar('title') ); }
@@ -93,9 +124,8 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-if(mins || hours || days){
+if(mins || hours || days || time){
 	tour = false;
-	var deadline = new Date(Date.parse(new Date()) + days + hours + mins);
 	showTitle();
 	initializeClock('clock', deadline);
 	progressJs().setOptions({ 'theme': 'blue' }).start().set(100);
