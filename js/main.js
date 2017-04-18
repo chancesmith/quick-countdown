@@ -14,18 +14,20 @@ let today = new Date(),
 		$message = document.getElementById('done-message'),
 		tour = true;
 
+// sets up today as a string for ?time and ?date
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
-
 var yyyy = today.getFullYear();
 if(dd<10){dd='0'+dd;}
 if(mm<10){mm='0'+mm;}
 var todayString = mm+'/'+dd+'/'+yyyy;
 
+// adds splice for ?time adding ":" in "1230" = "12:30"
 String.prototype.splice = function(idx, rem, str) {
     return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
 };
 
+// grabs the URL variable, if it exists
 function getUrlVar(q) {
 	return (window.location.search.match(new RegExp('[?&]' + q + '=([^&]+)')) || [, null])[1];
 }
