@@ -26,5 +26,6 @@ https://chancesmith.github.io/quick-countdown/?mins=5&title=Time%20until%20CO:de
 - [X] add visual of time left on countdown
 - [ ] `?date=2017-05-02&hours=14&mins=35` 2:35pm on 05-02-2017
 - [ ] `?date=2017-05-02`
+- [ ] `?time=1630` 4:30pm
 - [ ] remove blocks if section starts w/ zero (make more minimal)
 - [ ] remove blocks once section reaches zero (extra minimal)
