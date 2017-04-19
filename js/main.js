@@ -4,6 +4,7 @@ let today = new Date(),
 		hours = 0,
 		mins = 0,
 		time = 0,
+		dateSet = 0,
 		date = today,
 		countdown,
 		deadline,
@@ -40,9 +41,9 @@ if(getUrlVar('hours')){ hours = getUrlVar('hours') * 60 * 60 * 1000; }
 if(getUrlVar('mins')){ mins = getUrlVar('mins') * 60 * 1000; }
 // get date
 // if(getUrlVar('date')){
-// 	date = getUrlVar('date').replace(/-/g, "\/");
-// 	console.log(date);
-// 	todayString = date; // something like that
+// 	dateSet = getUrlVar('date').replace(/-/g, "\/");
+// 	console.log(dateSet);
+// 	todayString = dateSet; // something like that
 // }
 // get military time
 if(getUrlVar('time')){
@@ -52,7 +53,7 @@ if(getUrlVar('time')){
 // set deadline
 if(time) {
 	deadline = time;
-} else if(date) {
+} else if(dateSet) {
 	deadline = date;
 } else {
 	deadline = new Date(Date.parse(new Date()) + days + hours + mins + time);
