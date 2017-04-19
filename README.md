@@ -10,6 +10,7 @@ https://chancesmith.github.io/quick-countdown/
 https://chancesmith.github.io/quick-countdown/?mins=5&title=Time%20until%20CO:de
 
 ## Countdown variables
+- `?time=0700` 7:00am or `?time=`
 - `?days=4`
 - `?hours=2`
 - `?mins=7`
@@ -29,3 +30,4 @@ https://chancesmith.github.io/quick-countdown/?mins=5&title=Time%20until%20CO:de
 - [X] `?time=1630` 4:30pm
 - [ ] remove blocks if section starts w/ zero (make more minimal)
 - [ ] remove blocks once section reaches zero (extra minimal)
+– [ ] fix `?time` to show the countdown tomorrow if already passed today
