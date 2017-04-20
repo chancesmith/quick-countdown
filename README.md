@@ -10,8 +10,8 @@ https://chancesmith.github.io/quick-countdown/
 https://chancesmith.github.io/quick-countdown/?mins=5&title=Time%20until%20CO:de
 
 ## Countdown variables
-- `?date=2021-04-26` 4/26/2021 12am
-- `?time=0700` 7:00am or `?time=`
+- `?date=2021-04-26` 4/26/2021 12am or `?date=2025` 1/1/2025 12am
+- `?time=0700` 7am or `?time=1800` 6pm
 - `?days=4`
 - `?hours=2`
 - `?mins=7`
