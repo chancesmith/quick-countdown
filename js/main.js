@@ -3,7 +3,6 @@ let today = new Date(),
 		days = 0,
 		hours = 0,
 		mins = 0,
-		time = 0,
 		date = today,
 		countdown,
 		deadline,
@@ -33,11 +32,20 @@ function getUrlVar(q) {
 }
 
 // get hours & convert to days
-if(getUrlVar('days')){ days = getUrlVar('days') * 24 * 60 * 60 * 1000; }
+if(getUrlVar('days')){
+	days = getUrlVar('days') * 24 * 60 * 60 * 1000;
+	deadline = new Date(Date.parse(new Date()) + days + hours + mins + 1000);
+}
 // get hours & convert to hours
-if(getUrlVar('hours')){ hours = getUrlVar('hours') * 60 * 60 * 1000; }
+if(getUrlVar('hours')){
+	hours = getUrlVar('hours') * 60 * 60 * 1000;
+	deadline = new Date(Date.parse(new Date()) + days + hours + mins + 1000);
+}
 // get mins & convert to mins
-if(getUrlVar('mins')){ mins = getUrlVar('mins') * 60 * 1000; }
+if(getUrlVar('mins')){
+	mins = getUrlVar('mins') * 60 * 1000;
+	deadline = new Date(Date.parse(new Date()) + days + hours + mins + 1000);
+}
 // get date
 if(getUrlVar('date')){
 	todayString = getUrlVar('date').replace(/-/g, "\/");
@@ -45,20 +53,23 @@ if(getUrlVar('date')){
 }
 // get military time
 if(getUrlVar('time')){
-	// todayString is either today or ?date is set to a future date
-	time = todayString + " " + getUrlVar('time').splice(2, 0, ":");
-	dealine = new Date(Date.parse(new Date( time )));
+	// todayString is either today or a future date
+	todayString = todayString + " " + getUrlVar('time').splice(2, 0, ":");
+	dealine = new Date(Date.parse(new Date( todayString )));
 }
-// set deadline
-if(!deadline) {
-	deadline = new Date(Date.parse(new Date()) + days + hours + mins + time);
-}
-
+console.log(deadline);
+////
+// change the title
+// @return void
+////
 function showTitle(){
 	if(getUrlVar('title')){ title = decodeURIComponent( getUrlVar('title') ); }
 	$title.innerHTML = title;
 }
-
+////
+// show success message
+// @return void
+////
 function showTimerDoneMessage(){
 	// hide title
 	$title.style.display = 'none';
@@ -90,7 +101,11 @@ function getTimeRemaining(endtime) {
     'seconds': seconds
   };
 }
-
+////
+// initialize clock and look till done
+// @var `id` of element on DOM
+// @var `endtime` when to stop countdown
+////
 function initializeClock(id, endtime) {
   var clock = document.getElementById(id);
   var daysSpan = clock.querySelector('.days');
@@ -98,7 +113,7 @@ function initializeClock(id, endtime) {
   var minutesSpan = clock.querySelector('.minutes');
   var secondsSpan = clock.querySelector('.seconds');
   var startTotal = getTimeRemaining(endtime).total;
-
+  // update clock on DOM
   function updateClock() {
     var t = getTimeRemaining(endtime);
 
@@ -121,7 +136,9 @@ function initializeClock(id, endtime) {
   updateClock();
   var timeinterval = setInterval(updateClock, 1000);
 }
-
+////
+// check if deadline is set
+////
 if(deadline){
 	tour = false;
 	showTitle();
@@ -129,13 +146,15 @@ if(deadline){
 	progressJs().setOptions({ 'theme': 'blue' }).start().set(100);
 	document.getElementsByClassName('wrap')[0].style.opacity = 0.5;
 }
-
+////
+// start the tour
+////
 if(tour){
 	// hide title
 	$title.style.display = 'none';
 	// hide clock
 	$clock.style.display = 'none';
-
+	// build tour for DOM injection
 	$message.innerHTML = '<h1>Ready for a countdown?</h1>';
 	$message.innerHTML += '<p>Pick a one below or <a href="https://github.com/chancesmith/quick-countdown/blob/master/README.md">read the instructions</a> to create your own countdown.</p>';
 	$message.innerHTML += '<a class="btn" href="?mins=3">3 mins</a> ';
