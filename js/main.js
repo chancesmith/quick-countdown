@@ -4,7 +4,6 @@ let today = new Date(),
 		hours = 0,
 		mins = 0,
 		time = 0,
-		dateSet = 0,
 		date = today,
 		countdown,
 		deadline,
@@ -40,22 +39,18 @@ if(getUrlVar('hours')){ hours = getUrlVar('hours') * 60 * 60 * 1000; }
 // get mins & convert to mins
 if(getUrlVar('mins')){ mins = getUrlVar('mins') * 60 * 1000; }
 // get date
-// if(getUrlVar('date')){
-// 	dateSet = getUrlVar('date').replace(/-/g, "\/");
-// 	console.log(dateSet);
-// 	todayString = dateSet; // something like that
-// }
+if(getUrlVar('date')){
+	todayString = getUrlVar('date').replace(/-/g, "\/");
+	deadline = new Date(Date.parse(new Date( todayString )));
+}
 // get military time
 if(getUrlVar('time')){
+	// todayString is either today or ?date is set to a future date
 	time = todayString + " " + getUrlVar('time').splice(2, 0, ":");
-	time = new Date(Date.parse(new Date( time )));
+	dealine = new Date(Date.parse(new Date( time )));
 }
 // set deadline
-if(time) {
-	deadline = time;
-} else if(dateSet) {
-	deadline = date;
-} else {
+if(!deadline) {
 	deadline = new Date(Date.parse(new Date()) + days + hours + mins + time);
 }
 
@@ -127,7 +122,7 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-if(mins || hours || days || time){
+if(deadline){
 	tour = false;
 	showTitle();
 	initializeClock('clock', deadline);
