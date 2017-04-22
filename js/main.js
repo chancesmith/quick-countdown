@@ -107,12 +107,25 @@ function getTimeRemaining(endtime) {
 // @var `endtime` when to stop countdown
 ////
 function initializeClock(id, endtime) {
+  var t = getTimeRemaining(endtime);
   var clock = document.getElementById(id);
-  var daysSpan = clock.querySelector('.days');
-  var hoursSpan = clock.querySelector('.hours');
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
+  var daysSpan = clock.querySelector('#days');
+  var hoursSpan = clock.querySelector('#hours');
+  var minutesSpan = clock.querySelector('#minutes');
+  var secondsSpan = clock.querySelector('#seconds');
   var startTotal = getTimeRemaining(endtime).total;
+
+  // hide numbers if reach zero
+  if (!t.days) {
+  	daysSpan.style.display = 'none'
+  	// if days == zero, than check hours too
+  	if (!t.hours) {
+  		hoursSpan.style.display = 'none'
+  		// if hours == zero, than check minutes too
+  		if (!t.minutes) {minutesSpan.style.display = 'none'};
+  	}
+  }
+
   // update clock on DOM
   function updateClock() {
     var t = getTimeRemaining(endtime);
@@ -121,10 +134,11 @@ function initializeClock(id, endtime) {
     var currentPercentageLeft = Math.floor( t.total / startTotal * 100 );
     progressJs().set(currentPercentageLeft);
 
-    daysSpan.innerHTML = t.days;
-    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+    // update numbers from DOM in #id
+    daysSpan.querySelector('span').innerHTML = t.days;
+    hoursSpan.querySelector('span').innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.querySelector('span').innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.querySelector('span').innerHTML = ('0' + t.seconds).slice(-2);
 
     if (t.total <= 0) {
       clearInterval(timeinterval);
