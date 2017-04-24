@@ -33,3 +33,4 @@ https://chancesmith.github.io/quick-countdown/?mins=5&title=Time%20until%20CO:de
 - [X] remove blocks once section reaches zero (extra minimal)
 – [ ] fix `?time` to show the countdown tomorrow if already passed today
 – [ ] only shows progress background for the last 60secs, maybe?
+– [ ] make mobile version work
